@@ -4,9 +4,8 @@ export const contact = {
   email: 'dsouzasherone@gmail.com',
   phone: '+91 74117 91663',
   phoneHref: '+917411791663',
-  // TODO: real profile URLs (the PDF only has link text)
-  linkedin: '#',
-  beacons: '#',
+  linkedin: 'https://www.linkedin.com/in/sheronedsouza/',
+  beacons: 'https://beacons.ai/enorehs',
 }
 
 export const profile =
