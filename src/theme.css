@@ -22,14 +22,14 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0d0e1c;
+  --bg: #05050b;
   --ink: #ecebff;
   --muted: #a3a5c8;
   --accent: #8a97ff;
   --accent-ink: #a9b2ff;
-  --on-accent: #0d0e1c;
-  --soft: #1c1e36;
-  --card: #15172b;
+  --on-accent: #05050b;
+  --soft: #15162a;
+  --card: #0d0e1a;
   --line: #ecebff22;
   --shadow: #000000aa;
   color-scheme: dark;
@@ -132,7 +132,8 @@ a { color: var(--accent-ink); }
 .hero-copy { padding-block: 3rem 5rem; }
 .name {
   font-family: var(--display);
-  font-size: clamp(3rem, 9vw, 7.5rem);
+  /* fully stretched, "Sherone" is ~5.3em wide; this keeps it inside the hero column */
+  font-size: clamp(2.5rem, 10vw - 12px, 7rem);
   font-weight: var(--display-weight);
   font-variation-settings: 'wdth' 112;
   line-height: 0.88;
@@ -141,7 +142,7 @@ a { color: var(--accent-ink); }
   animation: stretch 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both;
 }
 :root[data-theme='kawaii'] .name { font-size: clamp(2.3rem, 7vw, 6rem); letter-spacing: 0; line-height: 1.05; }
-.name .line { display: block; }
+.name .line { display: block; white-space: nowrap; }
 .name .ch { display: inline-block; transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1), color 0.2s; }
 .name .ch:hover { transform: translateY(-0.08em) rotate(-5deg); color: var(--accent-ink); }
 @keyframes stretch {
@@ -202,6 +203,7 @@ a { color: var(--accent-ink); }
 @media (max-width: 820px) {
   .hero { grid-template-columns: 1fr; min-height: auto; gap: 0; }
   .stage { order: -1; height: 470px; }
+  .name { font-size: min(7rem, 92vw / 5.6); }
   .hero-copy { padding-block: 1rem 4rem; }
 }
 
