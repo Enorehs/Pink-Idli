@@ -290,7 +290,79 @@ a { color: var(--accent-ink); }
   to { opacity: 0; transform: translate(calc(-50% + var(--dx)), 30px) scale(0.3) rotate(120deg); }
 }
 
+/* ---------- extra kawaii ---------- */
+.kawaii-only { display: none; }
+:root[data-theme='kawaii'] .kawaii-only { display: inline; }
+:root[data-theme='kawaii'] .plain-only { display: none; }
+
+:root[data-theme='kawaii'] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-7.5-4.6-9.5-9.2C1 8.3 3.2 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.8 0 6 3.8 4.5 7.3C19.5 16.4 12 21 12 21z' fill='%23ff4fa3' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 14 12, auto;
+}
+
+/* candy letters with a white sticker outline */
+:root[data-theme='kawaii'] .name .ch {
+  text-shadow: 3px 3px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 6px 7px 0 var(--soft);
+}
+:root[data-theme='kawaii'] .name .ch:nth-child(4n + 1) { color: #e0408f; }
+:root[data-theme='kawaii'] .name .ch:nth-child(4n + 2) { color: #8a5cf0; }
+:root[data-theme='kawaii'] .name .ch:nth-child(4n + 3) { color: #129c79; }
+:root[data-theme='kawaii'] .name .ch:nth-child(4n + 4) { color: #e2683c; }
+:root[data-theme='kawaii'] .name .ch:hover { transform: translateY(-0.15em) rotate(-8deg) scale(1.1); color: var(--accent); }
+
+.kaomoji { margin: 1.5rem 0 0; font-size: 1.3rem; color: var(--accent-ink); }
+
+/* cat-face badge photo */
+:root[data-theme='kawaii'] .badge-photo {
+  position: relative; font-size: 1.6rem;
+  background:
+    radial-gradient(circle at 24% 68%, #ffa3cd 0 8px, transparent 9px),
+    radial-gradient(circle at 76% 68%, #ffa3cd 0 8px, transparent 9px),
+    var(--pop);
+}
+:root[data-theme='kawaii'] .badge-photo::before,
+:root[data-theme='kawaii'] .badge-photo::after {
+  content: ''; position: absolute; top: -10px; width: 32px; height: 30px;
+  background: var(--pop); clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+:root[data-theme='kawaii'] .badge-photo::before { left: 4px; transform: rotate(-22deg); }
+:root[data-theme='kawaii'] .badge-photo::after { right: 4px; transform: rotate(22deg); }
+:root[data-theme='kawaii'] .badge-photo > span { position: relative; z-index: 1; }
+:root[data-theme='kawaii'] .badge-strip::after { content: ' ♡'; }
+:root[data-theme='kawaii'] .strap-stitch { stroke: #fff; stroke-width: 5; stroke-dasharray: 0 10; stroke-linecap: round; opacity: 0.9; }
+
+/* headings, buttons, chrome */
+:root[data-theme='kawaii'] h2:not(.h3) {
+  text-decoration: underline wavy var(--accent) 3px; text-underline-offset: 0.25em; text-decoration-skip-ink: none;
+}
+:root[data-theme='kawaii'] h2::after { content: ' ✿'; color: var(--accent); font-size: 0.7em; }
+:root[data-theme='kawaii'] .btn { border-color: var(--accent-ink); box-shadow: 0 5px 0 var(--accent-ink); transition: transform 0.2s cubic-bezier(0.3, 1.6, 0.5, 1), box-shadow 0.2s; }
+:root[data-theme='kawaii'] .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--accent-ink); }
+:root[data-theme='kawaii'] .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--accent-ink); }
+:root[data-theme='kawaii'] .btn-primary { background: var(--accent); color: var(--on-accent); }
+:root[data-theme='kawaii'] .progress {
+  height: 7px; background: repeating-linear-gradient(-45deg, var(--accent) 0 8px, #fff 8px 16px);
+}
+:root[data-theme='kawaii'] .pill { box-shadow: 0 0 0 2px var(--accent), 0 3px 10px -3px var(--shadow); }
+:root[data-theme='kawaii'] .sticker { border-width: 3px; border-radius: 999px; }
+:root[data-theme='kawaii'] .sticker[data-tone='2'] { background: #ffe9a3; color: #6b4a00; }
+:root[data-theme='kawaii'] .sheet { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--soft); }
+:root[data-theme='kawaii'] .award { border: 2px dashed var(--accent); }
+:root[data-theme='kawaii'] .award::before { content: '🎀'; }
+:root[data-theme='kawaii'] .tags li { border: 0; background: var(--card); box-shadow: 0 0 0 2px var(--soft); }
+:root[data-theme='kawaii'] .tags li:nth-child(3n + 1) { background: #d9fff2; }
+:root[data-theme='kawaii'] .tags li:nth-child(3n + 2) { background: #ece3ff; }
+:root[data-theme='kawaii'] .job-icon { color: var(--accent); }
+
+/* hearts and flowers drifting up behind the page */
+.floaties { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.floaties span { position: absolute; bottom: -3rem; color: var(--accent); opacity: 0.35; animation: float-up linear infinite; }
+@keyframes float-up {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-115vh) rotate(360deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .name { animation: none; }
   .name .ch, .btn { transition: none; }
+  .floaties { display: none; }
 }

@@ -9,6 +9,7 @@ import { Contact } from './components/Contact'
 import { Sparkles } from './components/Sparkles'
 
 const nameLines = ['Sherone', 'D’Souza']
+const floaties = ['♡', '✿', '☆', '🌸', '✦', '♡', '🎀', '✧', '✿', '♡', '☆', '🌸']
 
 export default function App() {
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme as Theme)
@@ -44,6 +45,7 @@ export default function App() {
               <a className="btn btn-primary" href="#work">See my work</a>
               <a className="btn" href={`mailto:${contact.email}`}>Email me</a>
             </div>
+            <p className="kaomoji kawaii-only" aria-hidden="true">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</p>
           </div>
           <Badge />
         </section>
@@ -95,7 +97,26 @@ export default function App() {
       </main>
 
       <Contact />
-      {theme === 'kawaii' && <Sparkles />}
+      {theme === 'kawaii' && (
+        <>
+          <Sparkles />
+          <div className="floaties" aria-hidden="true">
+            {floaties.map((g, i) => (
+              <span
+                key={i}
+                style={{
+                  left: `${(i * 8.3 + 3) % 100}%`,
+                  fontSize: `${1 + ((i * 7) % 4) * 0.45}rem`,
+                  animationDuration: `${18 + ((i * 5) % 14)}s`,
+                  animationDelay: `-${(i * 3.7) % 20}s`,
+                }}
+              >
+                {g}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
     </>
   )
 }

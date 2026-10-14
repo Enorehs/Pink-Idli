@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
-const glyphs = ['✦', '♡', '✧', '⋆']
+const glyphs = ['✦', '♡', '✧', '⋆', '✿', '🌸']
+const colors = ['#ff4fa3', '#b48cff', '#2fc79c', '#ffb938']
 
 // Cursor trail for kawaii mode. Plain DOM nodes so React doesn't re-render on every move.
 export function Sparkles() {
@@ -16,6 +17,7 @@ export function Sparkles() {
       s.className = 'sparkle'
       s.ariaHidden = 'true'
       s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)]
+      s.style.color = colors[Math.floor(Math.random() * colors.length)]
       s.style.left = `${lx}px`
       s.style.top = `${ly}px`
       s.style.setProperty('--dx', `${(Math.random() - 0.5) * 50}px`)

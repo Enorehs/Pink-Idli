@@ -44,13 +44,17 @@ export function Badge() {
         <span className="bow">🎀</span>
         <div className="badge-strip">Creator pass</div>
         <div className="badge-body">
-          <div className="badge-photo">SD</div>
+          <div className="badge-photo">
+            <span className="plain-only">SD</span>
+            <span className="kawaii-only">•ᴗ•</span>
+          </div>
           <p className="badge-name">Sherone D’Souza</p>
           <p className="badge-role">Brand, SEO &amp; event strategist</p>
         </div>
         <div className="badge-foot">
           <span className="barcode" />
-          <span>Drag me</span>
+          <span className="plain-only">Drag me</span>
+          <span className="kawaii-only">drag me (｡•̀ᴗ-)✧</span>
         </div>
       </motion.div>
     </motion.div>
