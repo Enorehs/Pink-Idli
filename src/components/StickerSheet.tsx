@@ -5,7 +5,7 @@ import { skills } from '../data'
 // Drag needs touch-action: none, which would block scrolling on phones.
 const canDrag = matchMedia('(pointer: fine)').matches
 
-export function StickerSheet() {
+export function StickerSheet({ groups = skills }: { groups?: { group: string; items: string[] }[] }) {
   const sheet = useRef<HTMLDivElement>(null)
 
   return (
@@ -14,7 +14,7 @@ export function StickerSheet() {
         <h2 id="skills-h">Skills</h2>
         <p className="muted">{canDrag ? 'They’re stickers. Peel them around the sheet.' : 'The full kit, sorted by what it’s for.'}</p>
         <div className="sheet" ref={sheet}>
-          {skills.map((g, gi) => (
+          {groups.map((g, gi) => (
             <div className="sticker-group" key={g.group}>
               <h3>{g.group}</h3>
               <ul className="stickers">

@@ -182,11 +182,14 @@ a { color: var(--accent-ink); }
   background: var(--accent); color: var(--on-accent);
   font: var(--display-weight) 1.1rem var(--display); font-variation-settings: 'wdth' 140;
 }
-.badge-body { padding: 1.2rem; }
+.badge-body { padding: 1.2rem; text-align: center; }
 .badge-photo {
-  display: grid; place-items: center; width: 96px; height: 96px; margin-bottom: 1rem;
-  border-radius: var(--radius); background: var(--pop); color: var(--on-pop);
-  font: var(--display-weight) 2.6rem var(--display); font-variation-settings: 'wdth' 70;
+  position: relative; width: 120px; height: 120px; margin: 0 auto 1rem;
+  border-radius: var(--radius); background: var(--pop); box-shadow: 0 0 0 4px var(--accent);
+}
+.badge-photo img {
+  position: relative; z-index: 1; display: block; width: 100%; height: 100%;
+  object-fit: cover; border-radius: inherit; pointer-events: none;
 }
 :root[data-theme='kawaii'] .badge-photo { border-radius: 50%; }
 .badge-name { margin: 0 0 0.35rem; font: var(--display-weight) 1.6rem/1 var(--display); }
@@ -313,22 +316,14 @@ a { color: var(--accent-ink); }
 
 .kaomoji { margin: 1.5rem 0 0; font-size: 1.3rem; color: var(--accent-ink); }
 
-/* cat-face badge photo */
-:root[data-theme='kawaii'] .badge-photo {
-  position: relative; font-size: 1.6rem;
-  background:
-    radial-gradient(circle at 24% 68%, #ffa3cd 0 8px, transparent 9px),
-    radial-gradient(circle at 76% 68%, #ffa3cd 0 8px, transparent 9px),
-    var(--pop);
-}
+/* cat ears on the badge photo */
 :root[data-theme='kawaii'] .badge-photo::before,
 :root[data-theme='kawaii'] .badge-photo::after {
-  content: ''; position: absolute; top: -10px; width: 32px; height: 30px;
-  background: var(--pop); clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  content: ''; position: absolute; top: -16px; width: 38px; height: 36px;
+  background: var(--accent); clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
-:root[data-theme='kawaii'] .badge-photo::before { left: 4px; transform: rotate(-22deg); }
-:root[data-theme='kawaii'] .badge-photo::after { right: 4px; transform: rotate(22deg); }
-:root[data-theme='kawaii'] .badge-photo > span { position: relative; z-index: 1; }
+:root[data-theme='kawaii'] .badge-photo::before { left: 2px; transform: rotate(-22deg); }
+:root[data-theme='kawaii'] .badge-photo::after { right: 2px; transform: rotate(22deg); }
 :root[data-theme='kawaii'] .badge-strip::after { content: ' ♡'; }
 :root[data-theme='kawaii'] .strap-stitch { stroke: #fff; stroke-width: 5; stroke-dasharray: 0 10; stroke-linecap: round; opacity: 0.9; }
 

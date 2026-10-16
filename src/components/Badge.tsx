@@ -1,9 +1,16 @@
 import { useEffect } from 'react'
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react'
+import pfp from '../assets/sherone-pfp.jpg'
 
 const STRAP = 150 // lanyard length in px; must match .badge top in theme.css
 
-export function Badge() {
+export function Badge({
+  strip = 'Creator pass',
+  role = 'Brand, SEO & event strategist',
+}: {
+  strip?: string
+  role?: string
+}) {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const reduce = useReducedMotion()
@@ -38,18 +45,17 @@ export function Badge() {
         whileDrag={{ cursor: 'grabbing' }}
         style={{ x, y, rotate }}
         role="img"
-        aria-label="Event badge: Sherone D'Souza, brand, SEO and event strategist"
+        aria-label={`${strip}: Sherone D'Souza, ${role}`}
       >
         <span className="clip" />
         <span className="bow">🎀</span>
-        <div className="badge-strip">Creator pass</div>
+        <div className="badge-strip">{strip}</div>
         <div className="badge-body">
           <div className="badge-photo">
-            <span className="plain-only">SD</span>
-            <span className="kawaii-only">•ᴗ•</span>
+            <img src={pfp} alt="" draggable={false} />
           </div>
           <p className="badge-name">Sherone D’Souza</p>
-          <p className="badge-role">Brand, SEO &amp; event strategist</p>
+          <p className="badge-role">{role}</p>
         </div>
         <div className="badge-foot">
           <span className="barcode" />

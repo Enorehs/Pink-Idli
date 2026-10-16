@@ -1,25 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-site="tech">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sherone D'Souza</title>
-    <meta name="description" content="Sherone D'Souza: marketing, brand, SEO and event strategist, creator and stage host." />
+    <title>Sherone D'Souza · Software Engineer</title>
+    <meta name="description" content="Sherone D'Souza: software engineer and creative technologist working across backend, graphics, computer vision and security." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,200..900&family=Hanken+Grotesk:wght@400;600;700&family=Mochiy+Pop+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Hanken+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <script>
-      // Set the theme before first paint so there is no flash.
-      try { var t = localStorage.getItem('theme') } catch (e) {}
-      if (t !== 'light' && t !== 'dark' && t !== 'kawaii') t = 'kawaii'
+      // Set the theme before first paint so there is no flash. Tech keeps its own key: no kawaii here.
+      try { var t = localStorage.getItem('tech-theme') } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       document.documentElement.dataset.theme = t
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/tech/main.tsx"></script>
   </body>
 </html>

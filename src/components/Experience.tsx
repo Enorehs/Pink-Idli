@@ -2,7 +2,15 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { experience } from '../data'
 
-export function Experience() {
+type Job = { role: string; company: string; points: string[] }
+
+export function Experience({
+  jobs = experience,
+  intro = 'Nine roles across SEO, brand, events, sales and content. Most recent first.',
+}: {
+  jobs?: Job[]
+  intro?: string
+}) {
   const [open, setOpen] = useState(0)
 
   return (
@@ -10,10 +18,10 @@ export function Experience() {
       <div className="wrap exp">
         <div className="exp-side">
           <h2 id="work-h">Where I’ve worked</h2>
-          <p className="muted">Nine roles across SEO, brand, events, sales and content. Most recent first.</p>
+          <p className="muted">{intro}</p>
         </div>
         <ol className="exp-list">
-          {experience.map((job, i) => {
+          {jobs.map((job, i) => {
             const isOpen = open === i
             return (
               <li key={job.company} className={isOpen ? 'job is-open' : 'job'}>

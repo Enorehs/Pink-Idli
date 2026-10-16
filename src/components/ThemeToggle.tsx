@@ -4,18 +4,30 @@ import { motion } from 'motion/react'
 
 export type Theme = 'light' | 'dark' | 'kawaii'
 
-const options: { id: Theme; label: string; icon: string }[] = [
+type Option = { id: Theme; label: string; icon: string }
+
+const allOptions: Option[] = [
   { id: 'light', label: 'Light', icon: '☀' },
   { id: 'dark', label: 'Dark', icon: '☾' },
   { id: 'kawaii', label: 'Kawaii', icon: '♡' },
 ]
 
-export function ThemeToggle({ theme, onChange }: { theme: Theme; onChange: (t: Theme) => void }) {
+export function ThemeToggle({
+  theme,
+  onChange,
+  options = allOptions,
+  storageKey = 'theme',
+}: {
+  theme: Theme
+  onChange: (t: Theme) => void
+  options?: Option[]
+  storageKey?: string
+}) {
   function pick(next: Theme, e: MouseEvent<HTMLButtonElement>) {
     if (next === theme) return
     const apply = () => {
       document.documentElement.dataset.theme = next
-      try { localStorage.setItem('theme', next) } catch {}
+      try { localStorage.setItem(storageKey, next) } catch {}
       flushSync(() => onChange(next))
     }
     if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) return apply()
